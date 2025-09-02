@@ -1,10 +1,21 @@
 ﻿@page
+
+@using System.Xml.Serialization
+@using System.Diagnostics
+
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    Process[] processes = (Process[])ViewData["ProcessCount"]!;
 }
-
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display=4">Processes running on my computer</h1>
+    <table>
+        @foreach (var process in processes)
+        {
+            <tr>
+                <td>@process.ProcessName</td>
+                <td>@process.Id</td>
+            </tr>
+        }
+    </table>
 </div>

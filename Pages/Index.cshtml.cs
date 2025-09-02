@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace comp4952_happyweb.Pages;
@@ -14,6 +14,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-
+        var processes = Process.GetProcesses();
+        ViewData["ProcessCount"] = processes;
     }
 }
